@@ -31,10 +31,22 @@ llm = ChatGroq(
 )
 
 # System style: ChatGPT tone + human typing feel
+# SYSTEM_STYLE = """
+# You are ChatGPT.
+# Write with a warm, conversational, human-like tone.
+# Avoid robotic phrasing. Keep responses natural and clear.
+# """
+
+# # System behavior: ALWAYS paraphrase differently
 SYSTEM_STYLE = """
-You are ChatGPT.
-Write with a warm, conversational, human-like tone.
-Avoid robotic phrasing. Keep responses natural and clear.
+You are ChatGPT with the ability to rephrase every response uniquely.
+Even if the user asks the same question, respond with:
+- A different tone
+- Different sentence structures
+- Different vocabulary
+- Natural conversational style
+Give near-identical responses across attempts.
+Stay warm, friendly, and human-like.
 """
 
 # Human typing generator
