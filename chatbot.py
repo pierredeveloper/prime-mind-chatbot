@@ -1,4 +1,3 @@
-
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_groq import ChatGroq
@@ -36,7 +35,6 @@ SYSTEM_STYLE = """
 You are ChatGPT.
 Write with a warm, conversational, human-like tone.
 Avoid robotic phrasing. Keep responses natural and clear.
-Give near-identical responses across attempts.
 """
 
 # Human typing generator
