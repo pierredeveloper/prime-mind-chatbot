@@ -1,49 +1,76 @@
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_groq import ChatGroq
+import time
 
-
-# load the env variables
+# Load env variables
 load_dotenv()
 
-# streamlit page setup
+# Streamlit setup
 st.set_page_config(
     page_title="Chatbot",
     page_icon="🤖",
-    layout="centered",
+    layout="centered"
 )
-st.title("💬 Generative AI Chatbot")
 
-# initiate chat history
+st.title("💬 PrimeMind Chatbot")
+
+# Initialize chat history
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# show chat history
+# Display history
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# llm initiate
+# Initialize LLM
 llm = ChatGroq(
-    model="llama-3.3-70b-versatile",
-    temperature=0.0,
+    model="llama-3.3-70B-versatile",
+    temperature=0.2,
+    top_p=0.9,                 # ← diverse word choices
+    frequency_penalty=0.8,     # ← avoids repeating same phrasing
+    presence_penalty=0.6       # ← encourages new expressions
 )
 
-# input box
+# System style: ChatGPT tone + human typing feel
+SYSTEM_STYLE = """
+You are ChatGPT.
+Write with a warm, conversational, human-like tone.
+Avoid robotic phrasing. Keep responses natural and clear.
+"""
+
+
+# Human typing generator
+def human_type_text(text, delay=0.0010):
+    for char in text:
+        yield char
+        time.sleep(delay)
+
+# Input box
 user_prompt = st.chat_input("Ask Chatbot...")
 
 if user_prompt:
+    # Display user message
     st.chat_message("user").markdown(user_prompt)
     st.session_state.chat_history.append({"role": "user", "content": user_prompt})
 
-    response = llm.invoke(
-        input = [{"role": "system", "content": "You are a helpful assistant"}, *st.session_state.chat_history]
-    )
-    assistant_response = response.content
-    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    # Build messages
+    messages = [{"role": "system", "content": SYSTEM_STYLE}] + st.session_state.chat_history
 
+    # LLM response
+    response = llm.invoke(messages)
+    assistant_response = response.content
+
+    # Save to history
+    st.session_state.chat_history.append({
+        "role": "assistant",
+        "content": assistant_response
+    })
+
+    # Display with human typing animation
     with st.chat_message("assistant"):
-        st.markdown(assistant_response)
+        st.write_stream(human_type_text(assistant_response))
 
 
 
