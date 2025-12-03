@@ -27,7 +27,7 @@ for message in st.session_state.chat_history:
 
 # Initialize LLM with HIGH variability
 llm = ChatGroq(
-    model="llama-3.3-70B-versatile",
+    model="llama-3.1-8b-instant",
     temperature=0.9,           # ← more creativity
     top_p=0.9,                 # ← diverse word choices
     #frequency_penalty=0.8,     # ← avoids repeating same phrasing
