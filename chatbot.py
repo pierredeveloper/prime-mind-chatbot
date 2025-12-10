@@ -31,8 +31,8 @@ for message in st.session_state.chat_history:
 llm = ChatGroq(
     #api_key=os.getenv("GROQ_API_KEY"),
     api_key=st.secrets["GROQ_API_KEY"],
-    model="llama-3.3-70B-versatile",
-    #model="llama-3.1-8b-instant",
+    #model="llama-3.3-70B-versatile",
+    model="llama-3.1-8b-instant",
     temperature=0.9,           # ← more creativity
     model_kwargs={"top_p": 0.9},                 # ← diverse word choices
     #frequency_penalty=0.8,     # ← avoids repeating same phrasing
