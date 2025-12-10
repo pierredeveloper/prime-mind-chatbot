@@ -16,7 +16,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("💬 PrimeMind Chatbot")
+st.title("💬 PrimeMind")
 
 # Initialize chat history
 if "chat_history" not in st.session_state:
@@ -29,10 +29,10 @@ for message in st.session_state.chat_history:
 
 # Initialize LLM with HIGH variability
 llm = ChatGroq(
-    #model="llama-3.3-70B-versatile",
     #api_key=os.getenv("GROQ_API_KEY"),
     api_key=st.secrets["GROQ_API_KEY"],
-    model="llama-3.1-8b-instant",
+    model="llama-3.3-70B-versatile",
+    #model="llama-3.1-8b-instant",
     temperature=0.9,           # ← more creativity
     model_kwargs={"top_p": 0.9},                 # ← diverse word choices
     #frequency_penalty=0.8,     # ← avoids repeating same phrasing
