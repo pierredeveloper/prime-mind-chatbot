@@ -32,9 +32,9 @@ llm = ChatGroq(
     #api_key=os.getenv("GROQ_API_KEY"),
     api_key=st.secrets["GROQ_API_KEY"],
     #model="llama-3.3-70B-versatile",
-    model="meta-llama/llama-guard-4-12b",
+    model="llama-3.3-70b-versatile",
     temperature=0.9,           # ← more creativity
-    model_kwargs={"top_p": 0.9},                 # ← diverse word choices
+    #model_kwargs={"top_p": 0.9},                 # ← diverse word choices
     #frequency_penalty=0.8,     # ← avoids repeating same phrasing
     #presence_penalty=0.6       # ← encourages new expressions
 )
