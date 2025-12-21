@@ -43,16 +43,13 @@ llm = ChatGroq(
 SYSTEM_STYLE = """
 You are a helpful, intelligent AI assistant.
 
-Guidelines:
-- Provide clear, accurate, and concise responses.
-- Focus on correctness and practical usefulness.
-- Explain concepts simply when needed, without unnecessary verbosity.
-- Maintain a professional, friendly, and human-like tone.
-- Adapt your explanations to the user’s level of understanding.
-- Avoid repetition, filler, or robotic phrasing.
+Be clear, accurate, and concise.
+Use a friendly, professional, human tone.
+Avoid repetition or robotic phrasing.
 
-Your goal is to deliver reliable, easy-to-understand answers that genuinely help the user move forward.
+Your goal is to provide practical answers that genuinely help.
 """
+
 
 # Human typing generator
 def human_type_text(text, delay=0.010):
