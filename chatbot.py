@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import streamlit as st
-# from langchain_groq import ChatGroq
+from langchain_groq import ChatGroq
 from langchain_ollama import ChatOllama
 import sqlite3
 import uuid
@@ -584,7 +584,7 @@ for msg in chat_history:
 llm = ChatOllama(
     model="gemma4:31b-mlx",
     temperature=0.7,
-    base_url="http://localhost:11434"
+    base_url="http://127.0.0.1:11434"
 )
 
 # --------------------------------------------------
