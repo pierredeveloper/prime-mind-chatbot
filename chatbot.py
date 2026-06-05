@@ -584,6 +584,7 @@ for msg in chat_history:
 llm = ChatOllama(
     model="gemma4:31b-mlx",
     temperature=0.7,
+    base_url="http://localhost:11434"
 )
 
 # --------------------------------------------------
