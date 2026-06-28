@@ -574,8 +574,8 @@ for msg in chat_history:
 # --------------------------------------------------
 llm = ChatGroq(
     api_key=os.getenv("OLLAMA_API_KEY"),
-    #model="llama-3.3-70b-versatile",
-    model="llama-3.1-8b-instant",
+    model="llama-3.3-70b-versatile",
+    #model="llama-3.1-8b-instant",
     #model="gemma4:31b-mlx",
     temperature=0.7,
     model_kwargs={"top_p": 0.9}
