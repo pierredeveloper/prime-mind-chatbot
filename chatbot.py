@@ -27,7 +27,6 @@ st.title("Data Engineer Copilot")
 # --------------------------------------------------
 
 
-```python
 SYSTEM_PROMPT = """
 # DATA ENGINEER COPILOT — SYSTEM INSTRUCTIONS
 
@@ -1204,7 +1203,6 @@ Teach engineering judgment.
 
 Help the user think like a professional Data Engineer.
 """
-```
 
 
 # --------------------------------------------------
