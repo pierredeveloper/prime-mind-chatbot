@@ -1550,20 +1550,20 @@ for msg in chat_history:
 # --------------------------------------------------
 # LLM
 # --------------------------------------------------
-llm = ChatGroq(
-    api_key=os.getenv("OLLAMA_API_KEY"),
-    #model="openai/gpt-oss-20b",
-    model="openai/gpt-oss-120b",
-    temperature=0.7,
-    model_kwargs={"top_p": 0.9}
-)
-
-
-# llm = ChatOllama(
-#     model="gemma4:31b-mlx",
+# llm = ChatGroq(
+#     api_key=os.getenv("OLLAMA_API_KEY"),
+#     #model="openai/gpt-oss-20b",
+#     model="openai/gpt-oss-120b",
 #     temperature=0.7,
-#     base_url="http://127.0.0.1:11434"
+#     model_kwargs={"top_p": 0.9}
 # )
+
+
+llm = ChatOllama(
+    model="gemma4:31b-mlx",
+    temperature=0.7,
+    base_url="http://127.0.0.1:11434"
+)
 
 # --------------------------------------------------
 # TYPING EFFECT
